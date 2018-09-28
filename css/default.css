@@ -1,12 +1,15 @@
 @charset "utf-8";
 
 @import url('https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800&subset=korean');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,700,900&subset=korean');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:700,700i');
 @import url('https://fonts.googleapis.com/css?family=Raleway:100,100i,300,300i,400,400i,800,800i');
 
 /*
 	Nanum Gothic
 		font-family: "Nanum Gothic", sans-serif;
+	Noto Sans KR
+		font-family: 'Noto Sans KR', sans-serif;
 	Open Sans
 		font-family: "Open Sans", sans-serif;
 	Raleway
@@ -40,7 +43,7 @@
 	width: 100%; /*width: 100%;일 경우 right: 0;해도 똑같이 적용됨*/
 	height: 80px;
 	background-color: #179191;
-	z-index: 3000;
+	z-index: 5;
 }
 
 #header_container .header_inner {
@@ -99,6 +102,11 @@
 	color: #FFAA00;
 }
 
+::selection {
+	background-color: #179191;
+	color: #FFAA00;
+}
+
 
 /*intro*/
 .intro_container {
@@ -121,7 +129,7 @@
 	content: "";
 	position: absolute;
 	left: 0; right: 0; top: 0; bottom: 0;
-	background-color: rgba(0,0,0,0.75);
+	background-color: rgba(0,0,0,0.72);
 }
 
 .intro_container .intro_inner::after {
@@ -282,6 +290,8 @@
 	font-size: 16px;
 	color: #666;
 	padding: 6px 0;
+	font-family: 'Noto Sans KR', sans-serif;
+	font-weight: 300;
 }
 
 #about .content_wrap .contBox .info td a {
@@ -366,6 +376,24 @@
 /*portfolio*/
 #portfolio {
 	background-color: #f2f2f2;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+
+#portfolio .category table {
+	margin: 20px auto -20px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#portfolio .category th {
+	width: 320px;
+	font-family: "Open Sans", sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+#portfolio .category td {
+	width: 80px;
 }
 
 #portfolio .content_wrap {
@@ -379,12 +407,31 @@
 }
 
 #portfolio .content_wrap .item {
-	width: 360px; height: 490px;
+	width: 360px; height: 540px;
 	background-color: #fff;
 	float: left;
 	margin: 40px 0 0 40px;
 	border: 1px solid #d3d3d3;
 	box-sizing: border-box;
+}
+
+#portfolio .content_wrap .item .button {
+	width: 330px;
+	height: 40px;
+	text-align: center;
+	text-transform: uppercase;
+	background-color: #f2f2f2;
+	border-style: none;
+	margin: 10px 15px;
+	line-height: 40px;
+	font-size: 13px;
+	font-family: "Raleway", sans-serif;
+	font-weight: 400;
+}
+
+#portfolio .content_wrap .item .button:hover {
+	background-color: #179191;
+	color: white;
 }
 
 #portfolio .content_wrap .item:hover .thumbBox img {
@@ -455,7 +502,8 @@
 }
 
 #portfolio .content_wrap .item .contBox .tit {
-	font-size: 18px;	
+	font-size: 18px;
+	font-weight: 700;
 }
 
 #portfolio .content_wrap .item .contBox .type {
@@ -463,6 +511,7 @@
 	display: block;
 	margin-top: 8px;
 	text-transform: uppercase;
+	font-weight: 300;
 }
 
 #portfolio .content_wrap .item .contBox .dis {
@@ -472,12 +521,118 @@
 	overflow: hidden;
 	margin-top: 10px;
 	text-align: justify;
+	font-weight: 300;
 	text-overflow:ellipsis;
 	-webkit-line-clamp:3; /* 셋째줄에서 ... 표시 */
 	-webkit-box-orient: vertical;
 	display: -webkit-box;
 	word-wrap:break-word;
 	-o-text-overflow:ellipsis;
+}
+
+.visible{
+  display: block;
+}
+
+.none-visible{
+  display:none;
+}
+
+#portfolio .portModal {
+	width:60vw;
+	height:40vw;
+	margin:0 auto;
+	box-shadow:0px 0px 8px #eaeaea;
+	background-color:#fff;
+	padding-top:10px;
+	position: fixed;
+	top:7vw;
+	left:20vw;
+  /*버튼을 누르면 이부분이 block으로 체인지 */
+/*	display:none;*/
+  /*모달 띄어질때 효과*/
+	-webkit-animation-name: animatetop;
+	-webkit-animation-duration: 0.4s;
+  	animation-name: animatetop;
+  	animation-duration: 0.4s; 
+}
+
+@-webkit-keyframes animatetop {
+  	from {
+  	  top: -300px;
+  	  opacity: 0; 
+  	}
+ 	 to {
+  	  bottom: 0;
+  	  opacity: 1; 
+ 	 } 
+}
+
+@keyframes animatetop {
+ 	 from {
+  	  top: -300px;
+  	  opacity: 0; 
+  	}
+  	to {
+  	  top: 0;
+  	  opacity: 1; 
+  	} 
+}
+
+#portfolio .portModal .portImg {
+	width:70%;
+ 	height:38vw;
+/*  	padding:25px;*/
+ 	background-color:#dedede;
+  	margin: 10px 0px 20px 20px;
+	text-align:center;
+  	font-size:30px;
+  	display:inline-block;
+	overflow-y: scroll;
+}
+
+#portfolio .portModal .portImg img {
+	width: 100%;
+}
+
+#portfolio .portModal .closeBtn {
+	float:right;
+	margin-right:20px;
+	line-height:160%;
+	font-size: 20px;
+	color: #ff9484;
+}
+
+#portfolio .portModal .closeBtn:hover {
+	font-weight: bold;	
+}
+
+#portfolio .portModal .textBox {
+	width:14vw;
+/*	height:150px;*/
+ 	margin-top:30px;
+ 	display:inline-block;
+	text-align: inherit;
+	font-weight: 300;
+	line-height: 18px;
+	margin-left: 20px;
+	position: fixed;
+}
+
+#portfolio .portModal .textBox .tit {
+	font-size: 18px;
+	font-weight: 700;
+	line-height: 22px;
+}
+
+#portfolio .portModal .textBox a {
+	font-weight: 700;
+	color: #ff9484;
+}
+
+#portfolio .portModal .textBox .dis {
+	border-left: 1px solid gray;
+	padding: 15px;
 }
 
 
@@ -676,7 +831,7 @@
 	
 	#portfolio .content_wrap .item {
 		float: none;
-		width: 290px; height: 420px;
+		width: 290px; height: 460px;
 		display: inline-block;
 		vertical-align: top;
 		margin: 40px 20px 0 !important;
@@ -690,6 +845,13 @@
 	#portfolio .content_wrap .item .thumbBox .type {
 		line-height: 288px;
 		font-size: 22px;
+	}
+	
+	#portfolio .content_wrap .item .button {
+		width: 260px;
+		height: 30px;
+		line-height: 30px;
+		font-size: 11px;
 	}
 	
 	
@@ -716,16 +878,3 @@
 	}
 }
 */
-
-
-
-
-
-
-
-
-
-
-
-
-
